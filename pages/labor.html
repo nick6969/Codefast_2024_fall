@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Labor</title>
+  <title>勞工權益健診</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <style>
     body {
@@ -37,7 +37,7 @@
 
     li {
       margin-bottom: 20px;
-      padding: 20px;
+      padding: 10px;
       border-radius: 10px;
     }
 
@@ -65,7 +65,7 @@
     }
 
     ul li ul li {
-      margin-bottom: 2px; /* 減少選項之間的距離 */
+      margin-bottom: 2px;
     }
 
     button {
@@ -109,13 +109,12 @@
         <h3>{{ question.question }}</h3>
         <ul>
           <li v-for="option in question.options" :key="option.option_id">
-            <input type="radio" :id="option.option_id" :name="question.question_id" :value="option.label"
-              v-model="answers.find(answer => answer.question_id === question.question_id).answer.option_id">
-            <label :for="option.option_id">{{ option.label }}</label>
-            <br v-if="option.is_field">
-            <input type="text" v-if="option.is_field" :id="option.option_id + '_field'"
-              :name="question.question_id + '_field'" placeholder="Enter value"
-              v-model="answers.find(answer => answer.question_id === question.question_id).answer.value">
+            <input type="radio" :id="option.option_id" :name="question.question_id" :value="option.option_id" v-model="answers.find(answer => answer.question_id === question.question_id).answer.option_id">
+              <label :for="option.option_id">{{ option.label }}</label>
+              <br v-if="option.is_field">
+              <input type="text" v-if="option.is_field && answers.find(answer => answer.question_id === question.question_id).answer.option_id == option.option_id" :id="option.option_id + '_field'"
+                :name="question.question_id + '_field'" placeholder="Enter value"
+                v-model="answers.find(answer => answer.question_id === question.question_id).answer.value">
           </li>
         </ul>
       </li>
@@ -129,7 +128,7 @@
       el: '#app',
       data: {
         questions: [],
-        title: "Labor Self Check Questionnaire",
+        title: "勞工權益健診",
         answers: []
       },
       created() {
@@ -153,7 +152,7 @@
             });
         },
         getBackgroundColor(index) {
-          const colors = ['#dee2e6', '#ced4da', '#adb5bd'];
+          const colors = ['#5AB4C533', '#5AB4C566'];
           return colors[index % colors.length];
         },
         submit() {
@@ -162,7 +161,7 @@
         },
         cancel() {
           alert("canceled");
-        }
+        },
       }
     });
   </script>

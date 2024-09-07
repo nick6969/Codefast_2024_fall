@@ -4,8 +4,10 @@ import (
 	"codefast_2024/app"
 	"context"
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
+	"net/http/httputil"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -24,6 +26,8 @@ func NewServer(app *app.App) *Server {
 	}
 
 	registerHandlers(engine, app)
+
+	engine.NoRoute(NoRouter())
 
 	return &Server{
 		server: server,
@@ -51,4 +55,16 @@ func (s *Server) Shutdown() {
 	}
 
 	log.Println("Server exiting")
+}
+
+func NoRouter() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		value, _ := httputil.DumpRequest(c.Request, true)
+		fmt.Println("---- NO Route LOG Start ----")
+		fmt.Println("Request Time: " + time.Now().Format("2006/01/02 - 15:04:05"))
+		fmt.Println("Request IP: " + c.ClientIP())
+		fmt.Print(string(value))
+		fmt.Println("---- NO Route LOG End ----")
+		c.Status(http.StatusBadGateway)
+	}
 }
