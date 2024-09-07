@@ -1,7 +1,10 @@
 package controller
 
 import (
+	"codefast_2024/app"
+	"io/fs"
 	"slices"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -37,7 +40,7 @@ func AnswerLabor(ctx *gin.Context) {
 		}
 
 		if slices.Contains(check.WrongAnswerIDs, a.Answer.OptionID) {
-			result += check.Description + "\n"
+			result += check.Description + "<br>"
 		}
 	}
 
@@ -113,4 +116,32 @@ func sliceFirst[T any](slice []T, f func(T) bool) *T {
 	}
 
 	return nil
+}
+
+func Lunar(app *app.App) gin.HandlerFunc {
+
+	return func(ctx *gin.Context) {
+
+		now := time.Now().In(time.FixedZone("Asia/Taipei", 8*60*60))
+
+		dateString := now.Format("20060102")
+
+		file, err := getLunarImage(dateString, app)
+		if err != nil {
+			ctx.JSON(500, gin.H{"error": "Internal server error"})
+			return
+		}
+
+		ctx.Data(200, "image/png", file)
+	}
+
+}
+
+func getLunarImage(date string, app *app.App) ([]byte, error) {
+	file, err := fs.ReadFile(app.PageFS, date+".png")
+	if err != nil {
+		return nil, err
+	}
+
+	return file, nil
 }

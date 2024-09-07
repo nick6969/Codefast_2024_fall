@@ -12,6 +12,7 @@ import (
 func registerHandlers(engine *gin.Engine, app *app.App) {
 	registerStaticFiles(engine, app)
 	registerApi(engine, app)
+	engine.GET("/lunar", controller.Lunar(app))
 }
 
 func registerStaticFiles(engine *gin.Engine, app *app.App) {

@@ -113,15 +113,21 @@
               <label :for="option.option_id">{{ option.label }}</label>
               <br v-if="option.is_field">
               <input type="text" v-if="option.is_field && answers.find(answer => answer.question_id === question.question_id).answer.option_id == option.option_id" :id="option.option_id + '_field'"
-                :name="question.question_id + '_field'" placeholder="Enter value"
+                :name="question.question_id + '_field'" placeholder=""
                 v-model="answers.find(answer => answer.question_id === question.question_id).answer.value">
           </li>
         </ul>
       </li>
     </ul>
     <br>
-    <div>
+    <div v-if="questions.length != 0">
       <button type="button" @click="submit()">幫我檢查確認一下</button>
+    </div>
+    <div v-if="checkResult.length != 0">
+      <h3>健檢結果</h3>
+      <ul>
+        <li v-for="result in checkResult" :key="result">{{ result }}</li>
+      </ul>
     </div>
   </div>
 
@@ -131,7 +137,8 @@
       data: {
         questions: [],
         title: "勞工權益健診",
-        answers: []
+        answers: [],
+        checkResult: []
       },
       created() {
         this.fetch();
@@ -172,7 +179,12 @@
             })
             .then(response => response.json())
             .then(data => {
-              alert(data.message);
+              this.questions = [];
+              if (data.message === "") {
+                this.checkResult = ["快速檢查完成，健檢結果正常"];
+              } else {
+                this.checkResult = data.message.split("<br>");
+              }
             })
             .catch(error => {
               alert("error:", error);

@@ -209,12 +209,7 @@
 			},
 			{
 				"option_id": "2",
-				"label": "我想具名",
-				"is_field": false
-			},
-			{
-				"option_id": "3",
-				"label": "公司名稱",
+				"label": "我想具名(填公司名稱)",
 				"is_field": true
 			}
 		]
