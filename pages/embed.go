@@ -2,5 +2,5 @@ package pages
 
 import "embed"
 
-//go:embed labor_check.html
+//go:embed labor.html labor.json
 var FS embed.FS

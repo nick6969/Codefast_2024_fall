@@ -1,0 +1,219 @@
+[
+	{
+		"question_id": "1",
+		"question": "是否有工作契約？",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "有",
+				"is_field": false
+			},
+			{
+				"option_id": "2",
+				"label": "沒有",
+				"is_field": false
+			}
+		]
+	},
+	{
+		"question_id": "2",
+		"question": "如果有勞保的話請先輸入您的薪資",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "0~27469",
+				"is_field": false
+			},
+			{
+				"option_id": "2",
+				"label": "27470~45799",
+				"is_field": false
+			},
+			{
+				"option_id": "3",
+				"label": "45800~219,499",
+				"is_field": false
+			},
+			{
+				"option_id": "4",
+				"label": "其他",
+				"is_field": true
+			}
+		]
+	},
+	{
+		"question_id": "3",
+		"question": "每個月固定時間有拿到薪資單",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "有",
+				"is_field": false
+			},
+			{
+				"option_id": "2",
+				"label": "有，但沒有固定時間",
+				"is_field": false
+			},
+			{
+				"option_id": "3",
+				"label": "沒有",
+				"is_field": false
+			}
+		]
+	},
+	{
+		"question_id": "4",
+		"question": "每個月固定時間有拿到薪水",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "有,固定時間",
+				"is_field": false
+			},
+			{
+				"option_id": "2",
+				"label": "有，但沒有固定時間",
+				"is_field": false
+			},
+			{
+				"option_id": "3",
+				"label": "其他",
+				"is_field": true
+			}
+		]
+	},
+	{
+		"question_id": "5",
+		"question": "工作時間",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "上班時間",
+				"is_field": true
+			},
+			{
+				"option_id": "2",
+				"label": "下班時間",
+				"is_field": true
+			},
+			{
+				"option_id": "3",
+				"label": "其他",
+				"is_field": true
+			}
+		]
+	},
+	{
+		"question_id": "6",
+		"question": "工作時間是否彈性",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "彈性時間",
+				"is_field": false
+			},
+			{
+				"option_id": "2",
+				"label": "固定時間",
+				"is_field": false
+			},
+			{
+				"option_id": "3",
+				"label": "其他",
+				"is_field": true
+			}
+		]
+	},
+	{
+		"question_id": "7",
+		"question": "請假方式",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "口頭請假就可以了，不用申請",
+				"is_field": false
+			},
+			{
+				"option_id": "2",
+				"label": "有正式方式申請，主管都會同意放假。",
+				"is_field": false
+			},
+			{
+				"option_id": "3",
+				"label": "可以請假，但主管不一定同意",
+				"is_field": false
+			},
+			{
+				"option_id": "4",
+				"label": "沒有請假，有上班才有薪水",
+				"is_field": false
+			},
+			{
+				"option_id": "5",
+				"label": "其他",
+				"is_field": true
+			}
+		]
+	},
+	{
+		"question_id": "8",
+		"question": "工作有罰款機制?",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "沒有",
+				"is_field": false
+			},
+			{
+				"option_id": "2",
+				"label": "有，直接從薪水扣",
+				"is_field": false
+			},
+			{
+				"option_id": "3",
+				"label": "有，另外繳交罰款",
+				"is_field": false
+			}
+		]
+	},
+	{
+		"question_id": "9",
+		"question": "是否匿名做勞工權益健檢?",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "我想匿名",
+				"is_field": false
+			},
+			{
+				"option_id": "2",
+				"label": "我想具名",
+				"is_field": false
+			},
+			{
+				"option_id": "3",
+				"label": "公司統編",
+				"is_field": true
+			}
+		]
+	}
+]

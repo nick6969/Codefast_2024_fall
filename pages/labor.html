@@ -17,7 +17,20 @@
     new Vue({
       el: '#app',
       data: {
-        message: 'Hello, Vue!'
+        message: 'Labor'
+      },
+      created() {
+        // 呼叫 API
+        fetch('/api/question/labor')
+          .then(response => response.json())
+          .then(data => {
+            // 更新 message
+            this.message = data.message;
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            this.message = 'Failed to load data';
+          });
       }
     });
   </script>

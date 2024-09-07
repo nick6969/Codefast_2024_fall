@@ -10,11 +10,12 @@ import (
 
 func registerHandlers(engine *gin.Engine, app *app.App) {
 	registerStaticFiles(engine, app)
+	registerApi(engine, app)
 }
 
 func registerStaticFiles(engine *gin.Engine, app *app.App) {
 	group := engine.Group("")
-	staticFile(group, app.PageFS, "/labor", "labor_check.html", "text/html")
+	staticFile(group, app.PageFS, "/labor", "labor.html", "text/html")
 }
 
 func staticFile(r *gin.RouterGroup, fs embed.FS, path, filePath, contentType string) {
@@ -27,4 +28,11 @@ func staticFile(r *gin.RouterGroup, fs embed.FS, path, filePath, contentType str
 		ctx.Header("Cache-Control", "private, max-age=3600")
 		ctx.Data(http.StatusOK, contentType, file)
 	})
+}
+
+func registerApi(engine *gin.Engine, app *app.App) {
+	apiGroup := engine.Group("/api")
+	questionGroup := apiGroup.Group("/question")
+
+	staticFile(questionGroup, app.PageFS, "/labor", "labor.json", "application/json")
 }
