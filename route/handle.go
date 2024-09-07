@@ -17,6 +17,7 @@ func registerHandlers(engine *gin.Engine, app *app.App) {
 func registerStaticFiles(engine *gin.Engine, app *app.App) {
 	group := engine.Group("")
 	staticFile(group, app.PageFS, "/labor", "labor.html", "text/html")
+	staticFile(group, app.PageFS, "/hospital", "hospital.html", "text/html")
 }
 
 func staticFile(r *gin.RouterGroup, fs embed.FS, path, filePath, contentType string) {
