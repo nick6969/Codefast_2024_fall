@@ -160,7 +160,7 @@
         submit() {
           const hasEmptyOptionId = this.answers.some(answer => answer.answer.option_id === null);
           if (hasEmptyOptionId) {
-            alert("請填寫完整");
+            alert("請完整填寫每一個欄位");
             return;
           }
           fetch('/api/answer/labor', {
