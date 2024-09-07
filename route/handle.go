@@ -18,6 +18,10 @@ func registerStaticFiles(engine *gin.Engine, app *app.App) {
 	group := engine.Group("")
 	staticFile(group, app.PageFS, "/labor", "labor.html", "text/html")
 	staticFile(group, app.PageFS, "/hospital", "hospital.html", "text/html")
+	staticFile(group, app.PageFS, "/lottery", "lottery.html", "text/html")
+	staticFile(group, app.PageFS, "/lottery.css", "lottery.css", "text/css")
+	staticFile(group, app.PageFS, "/lottery.js", "lottery.js", "text/javascript")
+	staticFile(group, app.PageFS, "/right_arrow.png", "right_arrow.png", "image/png")
 }
 
 func staticFile(r *gin.RouterGroup, fs embed.FS, path, filePath, contentType string) {
