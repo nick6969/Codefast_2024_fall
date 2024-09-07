@@ -93,7 +93,7 @@
 	},
 	{
 		"question_id": "5",
-		"question": "工作時間",
+		"question": "工作時間 - 上班時間",
 		"description": "",
 		"is_multiple": false,
 		"options": [
@@ -101,15 +101,18 @@
 				"option_id": "1",
 				"label": "上班時間",
 				"is_field": true
-			},
+			}
+		]
+	},
+	{
+		"question_id": "10",
+		"question": "工作時間 - 下班時間",
+		"description": "",
+		"is_multiple": false,
+		"options": [
 			{
 				"option_id": "2",
 				"label": "下班時間",
-				"is_field": true
-			},
-			{
-				"option_id": "3",
-				"label": "其他",
 				"is_field": true
 			}
 		]

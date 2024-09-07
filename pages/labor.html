@@ -119,8 +119,10 @@
         </ul>
       </li>
     </ul>
-    <button type="button" @click="submit()">Submit</button>
-    <button type="button" @click="cancel()">Cancel</button>
+    <br>
+    <div>
+      <button type="button" @click="submit()">幫我檢查確認一下</button>
+    </div>
   </div>
 
   <script>
@@ -156,11 +158,25 @@
           return colors[index % colors.length];
         },
         submit() {
-          console.log("submit");
-          console.log(this.answers);
-        },
-        cancel() {
-          alert("canceled");
+          const hasEmptyOptionId = this.answers.some(answer => answer.answer.option_id === null);
+          if (hasEmptyOptionId) {
+            alert("請填寫完整");
+            return;
+          }
+          fetch('/api/answer/labor', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(this.answers)
+            })
+            .then(response => response.json())
+            .then(data => {
+              alert(data.message);
+            })
+            .catch(error => {
+              alert("error:", error);
+            });
         },
       }
     });

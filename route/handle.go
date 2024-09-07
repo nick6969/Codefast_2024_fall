@@ -2,6 +2,7 @@ package route
 
 import (
 	"codefast_2024/app"
+	"codefast_2024/controller"
 	"embed"
 	"net/http"
 
@@ -35,4 +36,7 @@ func registerApi(engine *gin.Engine, app *app.App) {
 	questionGroup := apiGroup.Group("/question")
 
 	staticFile(questionGroup, app.PageFS, "/labor", "labor.json", "application/json")
+
+	answerGroup := apiGroup.Group("/answer")
+	answerGroup.POST("/labor", controller.AnswerLabor)
 }
