@@ -93,55 +93,6 @@
 	},
 	{
 		"question_id": "5",
-		"question": "工作時間 - 上班時間",
-		"description": "",
-		"is_multiple": false,
-		"options": [
-			{
-				"option_id": "1",
-				"label": "上班時間",
-				"is_field": true
-			}
-		]
-	},
-	{
-		"question_id": "10",
-		"question": "工作時間 - 下班時間",
-		"description": "",
-		"is_multiple": false,
-		"options": [
-			{
-				"option_id": "2",
-				"label": "下班時間",
-				"is_field": true
-			}
-		]
-	},
-	{
-		"question_id": "6",
-		"question": "工作時間是否彈性",
-		"description": "",
-		"is_multiple": false,
-		"options": [
-			{
-				"option_id": "1",
-				"label": "彈性時間",
-				"is_field": false
-			},
-			{
-				"option_id": "2",
-				"label": "固定時間",
-				"is_field": false
-			},
-			{
-				"option_id": "3",
-				"label": "其他",
-				"is_field": true
-			}
-		]
-	},
-	{
-		"question_id": "7",
 		"question": "請假方式",
 		"description": "",
 		"is_multiple": false,
@@ -174,7 +125,7 @@
 		]
 	},
 	{
-		"question_id": "8",
+		"question_id": "6",
 		"question": "工作有罰款機制?",
 		"description": "",
 		"is_multiple": false,
@@ -197,6 +148,55 @@
 		]
 	},
 	{
+		"question_id": "7",
+		"question": "工作時間 - 上班時間",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "上班時間",
+				"is_field": true
+			}
+		]
+	},
+	{
+		"question_id": "10",
+		"question": "工作時間 - 下班時間",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "2",
+				"label": "下班時間",
+				"is_field": true
+			}
+		]
+	},
+	{
+		"question_id": "8",
+		"question": "工作時間是否彈性",
+		"description": "",
+		"is_multiple": false,
+		"options": [
+			{
+				"option_id": "1",
+				"label": "彈性時間",
+				"is_field": false
+			},
+			{
+				"option_id": "2",
+				"label": "固定時間",
+				"is_field": false
+			},
+			{
+				"option_id": "3",
+				"label": "其他",
+				"is_field": true
+			}
+		]
+	},
+	{
 		"question_id": "9",
 		"question": "是否匿名做勞工權益健檢?",
 		"description": "",
@@ -214,7 +214,7 @@
 			},
 			{
 				"option_id": "3",
-				"label": "公司統編",
+				"label": "公司名稱",
 				"is_field": true
 			}
 		]
