@@ -25,7 +25,7 @@ func staticFile(r *gin.RouterGroup, fs embed.FS, path, filePath, contentType str
 			ctx.AbortWithStatus(http.StatusInternalServerError)
 			return
 		}
-		ctx.Header("Cache-Control", "private, max-age=3600")
+		ctx.Header("Cache-Control", "private, max-age=0, no-cache")
 		ctx.Data(http.StatusOK, contentType, file)
 	})
 }

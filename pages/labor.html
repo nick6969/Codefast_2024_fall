@@ -1,38 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vue Example</title>
-  <!-- 引入 Vue.js -->
+  <title>Labor</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #app {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #4a90e2;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    ul li ul li {
+      margin-bottom: 2px; /* 減少選項之間的距離 */
+    }
+
+    button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+
+    button[type="button"]:hover {
+      opacity: 0.9;
+    }
+
+    button[type="button"]:active {
+      transform: scale(0.98);
+    }
+
+    button[type="button"] {
+      background-color: #4a90e2;
+      color: white;
+      transition: background-color 0.3s;
+    }
+
+    button[type="button"]:nth-child(2) {
+      background-color: #e94e77;
+    }
+  </style>
 </head>
+
 <body>
+
   <div id="app">
-    {{ message }}
+    <h1>{{ title }}</h1>
+    <ul>
+      <li v-for="(question, index) in questions" :key="question.question_id"
+        :style="{ backgroundColor: getBackgroundColor(index) }">
+        <h3>{{ question.question }}</h3>
+        <ul>
+          <li v-for="option in question.options" :key="option.option_id">
+            <input type="radio" :id="option.option_id" :name="question.question_id" :value="option.label"
+              v-model="answers.find(answer => answer.question_id === question.question_id).answer.option_id">
+            <label :for="option.option_id">{{ option.label }}</label>
+            <br v-if="option.is_field">
+            <input type="text" v-if="option.is_field" :id="option.option_id + '_field'"
+              :name="question.question_id + '_field'" placeholder="Enter value"
+              v-model="answers.find(answer => answer.question_id === question.question_id).answer.value">
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <button type="button" @click="submit()">Submit</button>
+    <button type="button" @click="cancel()">Cancel</button>
   </div>
 
   <script>
-    // 創建 Vue 實例
     new Vue({
       el: '#app',
       data: {
-        message: 'Labor'
+        questions: [],
+        title: "Labor Self Check Questionnaire",
+        answers: []
       },
       created() {
-        // 呼叫 API
-        fetch('/api/question/labor')
-          .then(response => response.json())
-          .then(data => {
-            // 更新 message
-            this.message = data.message;
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            this.message = 'Failed to load data';
-          });
+        this.fetch();
+      },
+      methods: {
+        fetch() {
+          fetch('/api/question/labor')
+            .then(response => response.json())
+            .then(data => {
+              this.questions = data;
+              this.answers = this.questions.map(question => {
+                return {
+                  question_id: question.question_id,
+                  answer: { option_id: null, value: "" }
+                };
+              });
+            })
+            .catch(error => {
+              alert("error:", error);
+            });
+        },
+        getBackgroundColor(index) {
+          const colors = ['#dee2e6', '#ced4da', '#adb5bd'];
+          return colors[index % colors.length];
+        },
+        submit() {
+          console.log("submit");
+          console.log(this.answers);
+        },
+        cancel() {
+          alert("canceled");
+        }
       }
     });
   </script>
 </body>
+
 </html>
