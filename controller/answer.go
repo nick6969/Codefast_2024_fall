@@ -132,6 +132,7 @@ func Lunar(app *app.App) gin.HandlerFunc {
 			return
 		}
 
+		ctx.Header("Cache-Control", "private, max-age=3600")
 		ctx.Data(200, "image/png", file)
 	}
 

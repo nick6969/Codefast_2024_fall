@@ -23,6 +23,7 @@ func registerStaticFiles(engine *gin.Engine, app *app.App) {
 	staticFile(group, app.PageFS, "/lottery.css", "lottery.css", "text/css")
 	staticFile(group, app.PageFS, "/lottery.js", "lottery.js", "text/javascript")
 	staticFile(group, app.PageFS, "/right_arrow.png", "right_arrow.png", "image/png")
+	staticFile(group, app.PageFS, "/favicon.ico", "favicon.ico", "image/png")
 }
 
 func staticFile(r *gin.RouterGroup, fs embed.FS, path, filePath, contentType string) {
@@ -32,7 +33,7 @@ func staticFile(r *gin.RouterGroup, fs embed.FS, path, filePath, contentType str
 			ctx.AbortWithStatus(http.StatusInternalServerError)
 			return
 		}
-		ctx.Header("Cache-Control", "private, max-age=0, no-cache")
+		ctx.Header("Cache-Control", "private, max-age=3600")
 		ctx.Data(http.StatusOK, contentType, file)
 	})
 }
